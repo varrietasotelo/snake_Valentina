@@ -7,7 +7,7 @@ import time
 #crear la ventana del juego 
 screen = Screen()
 screen.setup(width=600, height=600) #determina el tamaño de la ventana
-screen.bgcolor("blue")
+screen.bgcolor("#863A6F")
 screen.title("Snake Game Valentina")
 screen.tracer(0) #establece el delay en 0 
 
