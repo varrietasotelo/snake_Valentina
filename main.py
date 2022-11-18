@@ -4,19 +4,19 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
-
+#crear la ventana del juego 
 screen = Screen()
-screen.setup(width=600, height=600)
-screen.bgcolor("black")
-screen.title("My Snake Game")
-screen.tracer(0)
+screen.setup(width=600, height=600) #determina el tamaño de la ventana
+screen.bgcolor("blue")
+screen.title("Snake Game Valentina")
+screen.tracer(0) #establece el delay en 0 
 
-snake = Snake()
-food = Food()
-scoreboard = Scoreboard()
+snake = Snake() #trae la clase snake y todas sus funciones 
+food = Food() #trae la clase food y todas sus funciones 
+scoreboard = Scoreboard() #trae la clase scoreboard y todas sus funciones
 
-screen.listen()
-screen.onkey(snake.up, "Up")
+screen.listen() #la indica a la pantalla que debe aplicar las funciones que se van a llamar 
+screen.onkey(snake.up, "Up") #trae las funciones up, down, left, right, a traves de las cuales se aplica o simula el movimiento en la pantalla
 screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
@@ -24,21 +24,21 @@ screen.onkey(snake.right, "Right")
 game_is_on = True
 while game_is_on:
     screen.update()
-    time.sleep(0.1)
-    snake.move()
+    time.sleep(0.09) #establece el tiempo del movimiento
+    snake.move() #mueve la snake al llamar la clase
 
-#Detect collision with food.
+#Detecta la colision con la comida
     if snake.head.distance(food) < 15:
         food.refresh()
         snake.extend()
         scoreboard.increase_score()
 
-#Detect collision with wall.
+#Detecta la colision con la pared
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
         game_is_on = False
         scoreboard.game_over()
 
-#Detect collision with tail.
+#Detecta la colision con la cola
     for segment in snake.segments:
         if segment == snake.head:
             pass
@@ -46,42 +46,5 @@ while game_is_on:
             game_is_on = False
             scoreboard.game_over()
 
-screen.exitonclick()
+screen.exitonclick()#cierra la pantalla al presionar el boton 
 
-
-'''
-
-#crear el contenedor del juego
-#creacion de un objeto tipo ventana
-screen = Screen()
-
-screen.setup(width=600, height=600) #determina el tamaño de la pantalla
-screen.bgcolor("black")
-screen.title("Snake Game")
-screen.tracer(0) #establece delay 0 
-
-snake = Snake ()
-#food = Food()
-#scoreboard = Scoreboard()
-
-screen.listen()
-screen.onkey(snake.up, "UP")
-screen.onkey(snake.down, "DOWN")
-screen.onkey(snake.left, "LEFT")
-screen.onkey(snake.right, "RIGHT")
-
-#Animar o simular el movimiento
-game_is_on = True
-
-
-while game_is_on:
-    screen.update() #mejora la visualizacion
-    time.sleep(0.1) #determina el tiempo que tomara el movimiento
-    Snake.move()
-
-
-
-
-#crea el objeto y se va de inmediato, necesito algo que controle la salida del objeto
-screen.exitonclick()
-'''
