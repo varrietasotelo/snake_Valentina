@@ -19,7 +19,7 @@ class Snake: #se crea la clase snake que permitira utilizar las funciones en mai
 
     def add_segment(self, position): #convierte los cuadrados en un objeto
         new_segment = Turtle("square") #determina la forma
-        new_segment.color("black") #determina el color de la snake
+        new_segment.color("#FBFACD") #determina el color de la snake
         new_segment.penup() #mano alzada - evita que veamos el trazo del movimiento
         new_segment.goto(position)
         self.segments.append(new_segment) #convierte los cuadrados en un solo objeto
